@@ -9,6 +9,11 @@
 #   http://stackoverflow.com/a/5188364
 #   https://gist.github.com/jordan-brough/48e2803c0ffa6dc2e0bd
 #
+# Example usage:
+#    shiva@shiva-Y480 $ git recent
+#    * tmux_2 - 3c719a2 - tmux2 ready. - Shiva Ghose (6 weeks ago)
+#      master - 78f3a89 - gitignore - Shiva Ghose (20 hours ago)
+#
 # - Shiva Ghose and Elliot Branson
 
 usage()
