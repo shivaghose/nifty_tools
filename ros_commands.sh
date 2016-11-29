@@ -41,7 +41,14 @@ _nifty_catkin_build ()
 
 complete -F _nifty_catkin_build nifty_catkin_build
 
+nifty_catkin_test() {
+    # From Drew and Gabe!
+    catkin build ${1:---this} --no-deps --catkin-make-args run_tests
+    catkin_test_results $ROS_DIR_PATH/build/$1 --verbose
+}
+
 alias cb='nifty_catkin_build'
 complete -F _nifty_catkin_build cb
 alias runtime='rosrun rqt_runtime_monitor rqt_runtime_monitor'
-alias testme="catkin run_tests --no-deps --this"
+# alias testme="catkin run_tests --no-deps --this"
+alias testme="nifty_catkin_test"
