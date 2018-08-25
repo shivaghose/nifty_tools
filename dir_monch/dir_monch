@@ -1,0 +1,5 @@
+#!/bin/bash
+result=`dir_monch.py "$(pwd)"`
+GREEN='\033[0;32m'
+NC='\033[0m' # No Color
+echo -e "$GREEN$result$NC"
