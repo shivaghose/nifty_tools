@@ -1,0 +1,17 @@
+# Usage: copy (or sym-link) this file and git_recent_parser.py in a bin dir 
+# (like /usr/bin) and type:
+#       $ git back
+# This tool depends on git-recent and fzf
+
+# Function to write output to the command line:
+#   from: https://github.com/junegunn/fzf/wiki/examples#with-write-to-terminal-capabilities
+writecmd ()
+{
+    perl -e '$TIOCSTI = 0x5412; $l = <STDIN>; $lc = $ARGV[0] eq "-run" ? "\n" : ""; $l =~ s/\s*$/$lc/; map { ioctl STDOUT, $TIOCSTI, $_; } split "", $l;' -- $1
+}
+
+# git recent - to get the most recent git branches
+# fzf-tmux to move through the branches that git recent produces and pick a branch
+# git_recent_parser to get the git branch alone
+# writecmd to write the output of the chained commands in the command line
+git recent | tac | fzf-tmux --query="$1" --select-1 --exit-0 | git_recent_parser.py | writecmd
