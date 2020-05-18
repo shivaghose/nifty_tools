@@ -1,7 +1,9 @@
-#!/usr/bin/env python 
+#!/usr/bin/env python
 '''
 dir_monch: a utility to help shorten paths.
 '''
+
+from __future__ import print_function
 
 from os.path import expanduser
 from os import sep as os_sep
@@ -17,7 +19,7 @@ def dir_monch(path):
     MAX_PATH_LENGTH = 20
     if len(path) < MAX_PATH_LENGTH:
         return path
-    
+
     split_path = path.split(os_sep)
 
     shortened_path = []
@@ -48,5 +50,5 @@ def run_tests():
         assert output == expected_str
 
 if __name__ == '__main__':
-    print dir_monch(sys.argv[1])
+    print(dir_monch(sys.argv[1]))
     exit(0)
